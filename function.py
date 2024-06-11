@@ -1,3 +1,4 @@
+import csv
 import pandas as pd
 import os
 
@@ -109,7 +110,7 @@ def register_user(user_id, user_ic, user_file):
         new_user = {'User ID': user_id, 'User IC': user_ic, 'Password': password}
         df = df.append(new_user, ignore_index=True)
 
-        df.to_csv(user_file, mode='a', header=not os.path.isfile(user_file), index=False)
+        save_to_csv(new_user, user_file)
         print("User registered successfully.")
         return True
     except Exception as e:
